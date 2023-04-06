@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.toxsoft.skf.users.releng.category" label="org.toxsoft.skf.users.releng Category">
+      <description>
+         org.toxsoft.skf.users.releng Category
+      </description>
+   </category-def>
+   <!-- TODO: -->
+   <!-- <bundle id="org.toxsoft.skf.users.???"/> -->
+
+   <!-- sources -->
+   <!-- TODO: -->
+   <!-- <bundle id="org.toxsoft.skf.users.???.source"/> -->
+
+</site>
