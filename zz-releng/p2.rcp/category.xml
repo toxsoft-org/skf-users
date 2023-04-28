@@ -6,10 +6,12 @@
       </description>
    </category-def>
    <!-- TODO: -->
-   <!-- <bundle id="org.toxsoft.skf.users.???"/> -->
+   <bundle id="org.toxsoft.skf.users.gui"/>
+   <bundle id="org.toxsoft.skf.users.mws"/>
 
    <!-- sources -->
    <!-- TODO: -->
-   <!-- <bundle id="org.toxsoft.skf.users.???.source"/> -->
+   <bundle id="org.toxsoft.skf.users.gui.source"/>
+   <bundle id="org.toxsoft.skf.users.mws.source"/>
 
 </site>

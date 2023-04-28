@@ -16,14 +16,15 @@
   <!-- ЦЕЛЬ: lib.jar библиотек -->
   <!-- TODO: -->
   <target name="build-lib-jar" depends="clean" description="Сборка общих плагинов">
-    <ant dir="../../org.toxsoft.skf.users.gui" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" />
-    <ant dir="../../org.toxsoft.skf.users.mws" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" />
+    <!-- TODO: -->
+    <!-- <ant dir="../../org.toxsoft.skf.users.gui" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" /> -->
   </target>
 
   <!-- ЦЕЛЬ: сборка plugin-ов -->
   <target name="build" depends="build-lib-jar" description="Сборка общих плагинов">
     <!-- сборка plugin-ов -->
     <!-- TODO: -->
+    <!--
     <pde.exportPlugins destination="${ts-dest-dir-plugins}"
                        exportSource="true"
                        exportSourceBundle="false"
@@ -32,6 +33,7 @@
                                 org.toxsoft.skf.users.mws"
                        useworkspacecompiledclasses="true"
                        useJARFormat="true" />
+    -->
   </target>
 
   <!-- ЦЕЛЬ: очистка -->

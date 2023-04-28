@@ -5,11 +5,7 @@
          org.toxsoft.skf.users.releng Category
       </description>
    </category-def>
-   <bundle id="org.toxsoft.skf.users.gui"/>
-   <bundle id="org.toxsoft.skf.users.mws"/>
 
    <!-- sources -->
-   <bundle id="org.toxsoft.skf.users.gui.source"/>
-   <bundle id="org.toxsoft.skf.users.mws.source"/>
 
 </site>
