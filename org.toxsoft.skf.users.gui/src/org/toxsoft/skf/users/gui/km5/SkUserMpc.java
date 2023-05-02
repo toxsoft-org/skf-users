@@ -68,7 +68,7 @@ public class SkUserMpc
         DefaultTsNode<ISkRole> roleNode = new DefaultTsNode<>( NK_ROLE, aRootNode, role );
         // присвоим красивую иконку и нормальное имя
         roleNode.setName( role.attrs().getStr( IM5Constants.FID_NAME ) );
-        roleNode.setIconId( ICON_ROLE );
+        roleNode.setIconId( ICONID_ROLE );
         retVal.put( role.id(), roleNode );
       }
       return retVal;
@@ -84,7 +84,7 @@ public class SkUserMpc
           DefaultTsNode<ISkUser> userLeaf = new DefaultTsNode<>( NK_USER, roleNode, user );
           // присвоим красивую иконку и нормальное имя
           userLeaf.setName( user.attrs().getStr( IM5Constants.FID_NAME ) );
-          userLeaf.setIconId( ICON_USER );
+          userLeaf.setIconId( ICONID_USER );
           roleNode.addNode( userLeaf );
         }
       }
@@ -113,7 +113,7 @@ public class SkUserMpc
     setLifecycleManager( aLifecycleManager );
     //
     TreeModeInfo<ISkUser> tmiByRole = new TreeModeInfo<>( "ByRole", //$NON-NLS-1$
-        STR_N_TMI_BY_ROLES, STR_D_TMI_BY_ROLES, ICON_ROLES_LIST, new TreeMakerByRole() );
+        STR_N_TMI_BY_ROLES, STR_D_TMI_BY_ROLES, ICONID_ROLES_LIST, new TreeMakerByRole() );
     treeModeManager().addTreeMode( tmiByRole );
   }
 
