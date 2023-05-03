@@ -19,6 +19,8 @@
     <!-- TODO: -->
     <ant dir="../../org.toxsoft.skf.users.gui" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" /> 
     <ant dir="../../org.toxsoft.skf.users.mws" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" /> 
+    <ant dir="../../org.toxsoft.skf.users.skide" antfile="${ts-scripts-dir}/ts-build-lib.xml" target="build-lib-jar" /> 
+
   </target>
 
   <!-- ЦЕЛЬ: сборка -->
@@ -30,7 +32,8 @@
                        exportSourceBundle="false"
                        exportType="directory"
                        plugins="org.toxsoft.skf.users.gui,
-                                org.toxsoft.skf.users.mws"
+                                org.toxsoft.skf.users.mws,
+                                org.toxsoft.skf.users.skide"
                        useworkspacecompiledclasses="true"
                        useJARFormat="true" />
   </target>

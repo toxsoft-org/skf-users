@@ -8,10 +8,12 @@
    <!-- TODO: -->
    <bundle id="org.toxsoft.skf.users.gui"/>
    <bundle id="org.toxsoft.skf.users.mws"/>
+   <bundle id="org.toxsoft.skf.users.skide"/>
 
    <!-- sources -->
    <!-- TODO: -->
    <bundle id="org.toxsoft.skf.users.gui.source"/>
    <bundle id="org.toxsoft.skf.users.mws.source"/>
+   <bundle id="org.toxsoft.skf.users.skide.source"/>
 
 </site>

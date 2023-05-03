@@ -516,6 +516,7 @@
         <!-- TODO rcp-библиотеки -->
         <module>org.toxsoft.skf.users.gui</module>
         <module>org.toxsoft.skf.users.mws</module>
+        <module>org.toxsoft.skf.users.skide</module>
 
         <module>zz-releng/p2.rcp</module>
         <module>zz-releng/ant.rcp</module>
@@ -566,6 +567,7 @@
     </profile>
   </profiles>
   <modules>
+    <!-- TODO main-библиотеки -->
 
     <module>zz-releng/p2.main</module>
     <module>zz-releng/ant.main</module>
