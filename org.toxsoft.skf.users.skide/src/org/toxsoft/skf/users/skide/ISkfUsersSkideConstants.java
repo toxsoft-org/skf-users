@@ -1,7 +1,7 @@
 package org.toxsoft.skf.users.skide;
 
-import org.eclipse.e4.core.contexts.*;
-import org.toxsoft.core.tsgui.graphics.icons.*;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.toxsoft.core.tsgui.graphics.icons.ITsIconManager;
 
 /**
  * Application common constants.
@@ -20,7 +20,7 @@ public interface ISkfUsersSkideConstants {
   /**
    * Constants registration.
    *
-   * @param aWinContext {@link IEclipseContext} - windows level context
+   * @param aWinContext {@link IEclipseContext} - windows level context.
    */
   static void init( IEclipseContext aWinContext ) {
     ITsIconManager iconManager = aWinContext.get( ITsIconManager.class );
