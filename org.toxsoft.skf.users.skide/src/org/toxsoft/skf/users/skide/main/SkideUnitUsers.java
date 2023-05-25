@@ -29,7 +29,7 @@ public class SkideUnitUsers
     super( UNIT_ID, OptionSetUtils.createOpSet( //
         TSID_NAME, STR_SKIDE_USERS_MANAGEMENT, //
         TSID_DESCRIPTION, STR_SKIDE_USERS_MANAGEMENT_D, //
-        TSID_ICON_ID, ICONID_USERS_LIST //
+        TSID_ICON_ID, ICONID_USER_EDITOR //
     ), aContext, aCreator );
     unitActions().add( ACDEF_ABOUT );
   }
