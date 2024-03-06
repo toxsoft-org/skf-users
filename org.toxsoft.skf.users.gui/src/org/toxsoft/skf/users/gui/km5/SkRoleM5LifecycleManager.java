@@ -4,18 +4,16 @@ import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
-import org.toxsoft.core.tsgui.m5.IM5Bunch;
-import org.toxsoft.core.tsgui.m5.IM5Model;
-import org.toxsoft.core.tslib.bricks.validator.ValidationResult;
-import org.toxsoft.core.tslib.coll.IList;
-import org.toxsoft.core.tslib.gw.skid.Skid;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
-import org.toxsoft.uskat.core.api.objserv.IDtoObject;
-import org.toxsoft.uskat.core.api.users.ISkRole;
-import org.toxsoft.uskat.core.api.users.ISkUserService;
-import org.toxsoft.uskat.core.connection.ISkConnection;
-import org.toxsoft.uskat.core.gui.km5.KM5LifecycleManagerBasic;
-import org.toxsoft.uskat.core.impl.dto.DtoObject;
+import org.toxsoft.core.tsgui.m5.*;
+import org.toxsoft.core.tslib.bricks.validator.*;
+import org.toxsoft.core.tslib.coll.*;
+import org.toxsoft.core.tslib.gw.skid.*;
+import org.toxsoft.core.tslib.utils.errors.*;
+import org.toxsoft.uskat.core.api.objserv.*;
+import org.toxsoft.uskat.core.api.users.*;
+import org.toxsoft.uskat.core.connection.*;
+import org.toxsoft.uskat.core.gui.km5.*;
+import org.toxsoft.uskat.core.impl.dto.*;
 
 /**
  * Lifecylce manager for {@link SkRoleM5Model}.
@@ -23,7 +21,7 @@ import org.toxsoft.uskat.core.impl.dto.DtoObject;
  * @author dima
  */
 public class SkRoleM5LifecycleManager
-    extends KM5LifecycleManagerBasic<ISkRole, ISkConnection> {
+    extends KM5LifecycleManagerBasic<ISkRole> {
 
   // FIXME create SkRoleMpc with filering out hidden roles
 

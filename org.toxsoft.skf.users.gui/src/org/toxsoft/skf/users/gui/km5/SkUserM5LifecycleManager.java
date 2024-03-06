@@ -4,22 +4,19 @@ import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
 import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
-import org.toxsoft.core.tsgui.m5.IM5Bunch;
-import org.toxsoft.core.tsgui.m5.IM5Model;
-import org.toxsoft.core.tslib.bricks.strid.impl.StridUtils;
-import org.toxsoft.core.tslib.bricks.validator.ValidationResult;
-import org.toxsoft.core.tslib.coll.IList;
-import org.toxsoft.core.tslib.gw.skid.ISkidList;
-import org.toxsoft.core.tslib.gw.skid.Skid;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
-import org.toxsoft.core.tslib.utils.errors.TsUnsupportedFeatureRtException;
-import org.toxsoft.uskat.core.ISkCoreApi;
-import org.toxsoft.uskat.core.api.objserv.IDtoFullObject;
+import org.toxsoft.core.tsgui.m5.*;
+import org.toxsoft.core.tslib.bricks.strid.impl.*;
+import org.toxsoft.core.tslib.bricks.validator.*;
+import org.toxsoft.core.tslib.coll.*;
+import org.toxsoft.core.tslib.gw.skid.*;
+import org.toxsoft.core.tslib.utils.errors.*;
+import org.toxsoft.uskat.core.*;
+import org.toxsoft.uskat.core.api.objserv.*;
 import org.toxsoft.uskat.core.api.users.*;
-import org.toxsoft.uskat.core.connection.ISkConnection;
-import org.toxsoft.uskat.core.gui.km5.KM5LifecycleManagerBasic;
-import org.toxsoft.uskat.core.impl.dto.DtoFullObject;
-import org.toxsoft.uskat.core.utils.SkHelperUtils;
+import org.toxsoft.uskat.core.connection.*;
+import org.toxsoft.uskat.core.gui.km5.*;
+import org.toxsoft.uskat.core.impl.dto.*;
+import org.toxsoft.uskat.core.utils.*;
 
 /**
  * Lifecylce manager for {@link SkUserM5Model}.
@@ -28,7 +25,7 @@ import org.toxsoft.uskat.core.utils.SkHelperUtils;
  * @author dima
  */
 public class SkUserM5LifecycleManager
-    extends KM5LifecycleManagerBasic<ISkUser, ISkConnection> {
+    extends KM5LifecycleManagerBasic<ISkUser> {
 
   // TODO when editing user in roles selection dialog should be the hiddin roles shown? maybe app pref?
 
