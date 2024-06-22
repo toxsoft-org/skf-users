@@ -1,7 +1,5 @@
 package org.toxsoft.skf.users.mws.e4.uiparts;
 
-import javax.inject.Inject;
-
 import org.toxsoft.core.tsgui.bricks.ctx.ITsGuiContext;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.TsGuiContext;
 import org.toxsoft.core.tsgui.bricks.stdevents.ITsSelectionChangeListener;
@@ -13,6 +11,8 @@ import org.toxsoft.skf.users.mws.e4.service.ICurrentUsersMwsSkRoleService;
 import org.toxsoft.uskat.core.api.users.ISkRole;
 import org.toxsoft.uskat.core.gui.conn.ISkConnectionSupplier;
 import org.toxsoft.uskat.core.gui.e4.uiparts.SkMwsAbstractPart;
+
+import jakarta.inject.Inject;
 
 /**
  * Uipart contains {@link PanelSkRolesEditor} and respects {@link ICurrentUsersMwsSkRoleService#current()}.

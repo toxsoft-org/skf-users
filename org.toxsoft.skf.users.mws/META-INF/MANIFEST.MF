@@ -9,8 +9,8 @@ Export-Package: org.toxsoft.skf.users.mws,
  org.toxsoft.skf.users.mws.e4.addons,
  org.toxsoft.skf.users.mws.e4.service,
  org.toxsoft.skf.users.mws.e4.uiparts
-Require-Bundle: javax.annotation,
- javax.inject,
+Require-Bundle: jakarta.inject.jakarta.inject-api,
+ jakarta.annotation-api,
  org.eclipse.core.runtime,
  org.eclipse.ui;resolution:=optional,
  org.eclipse.rap.ui;resolution:=optional,
@@ -24,6 +24,6 @@ Require-Bundle: javax.annotation,
  org.toxsoft.uskat.core,
  org.toxsoft.uskat.core.gui,
  org.toxsoft.skf.users.gui
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: org.toxsoft.skf.users.mws
 Bundle-ActivationPolicy: lazy
