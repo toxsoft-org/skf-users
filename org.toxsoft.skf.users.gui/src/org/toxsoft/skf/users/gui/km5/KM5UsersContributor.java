@@ -1,13 +1,13 @@
 package org.toxsoft.skf.users.gui.km5;
 
-import org.toxsoft.core.tsgui.m5.IM5Domain;
-import org.toxsoft.core.tslib.coll.primtypes.IStringList;
-import org.toxsoft.core.tslib.coll.primtypes.impl.StringArrayList;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
+import org.toxsoft.core.tsgui.m5.*;
+import org.toxsoft.core.tslib.coll.primtypes.*;
+import org.toxsoft.core.tslib.coll.primtypes.impl.*;
+import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.uskat.core.api.users.*;
-import org.toxsoft.uskat.core.connection.ISkConnection;
-import org.toxsoft.uskat.core.gui.km5.IKM5ContributorCreator;
-import org.toxsoft.uskat.core.gui.km5.KM5AbstractContributor;
+import org.toxsoft.uskat.core.api.users.ability.*;
+import org.toxsoft.uskat.core.connection.*;
+import org.toxsoft.uskat.core.gui.km5.*;
 
 /**
  * Contributes M5-models for {@link ISkUserService} manager classes.
@@ -24,7 +24,9 @@ public class KM5UsersContributor
 
   private static final IStringList CONRTIBUTED_MODEL_IDS = new StringArrayList( //
       ISkRole.CLASS_ID, //
-      ISkUser.CLASS_ID //
+      ISkUser.CLASS_ID, //
+      ISkAbilityKind.CLASS_ID, //
+      ISkAbility.CLASS_ID //
   );
 
   /**
@@ -42,6 +44,8 @@ public class KM5UsersContributor
   protected IStringList papiCreateModels() {
     m5().addModel( new SkRoleM5Model( skConn() ) );
     m5().addModel( new SkUserM5Model( skConn() ) );
+    m5().addModel( new SkAbilityKindM5Model( skConn() ) );
+    m5().addModel( new SkAbilityM5Model( skConn() ) );
     return CONRTIBUTED_MODEL_IDS;
   }
 

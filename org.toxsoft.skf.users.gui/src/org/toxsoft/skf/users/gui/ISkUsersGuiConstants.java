@@ -19,12 +19,15 @@ public interface ISkUsersGuiConstants {
   // ------------------------------------------------------------------------------------
   // Icons
 
-  String PREFIX_OF_ICONID_FIELD_NAME = "ICONID_";          //$NON-NLS-1$
-  String ICONID_USER                 = "user";             //$NON-NLS-1$
-  String ICONID_USERS_LIST           = "users-list";       //$NON-NLS-1$
-  String ICONID_ROLE                 = "role";             //$NON-NLS-1$
-  String ICONID_ROLES_LIST           = "roles-list";       //$NON-NLS-1$
-  String ICONID_USER_EDITOR          = "app-users-editor"; //$NON-NLS-1$
+  String PREFIX_OF_ICONID_FIELD_NAME = "ICONID_";            //$NON-NLS-1$
+  String ICONID_USER                 = "user";               //$NON-NLS-1$
+  String ICONID_USERS_LIST           = "users-list";         //$NON-NLS-1$
+  String ICONID_ROLE                 = "role";               //$NON-NLS-1$
+  String ICONID_ROLES_LIST           = "roles-list";         //$NON-NLS-1$
+  String ICONID_USER_EDITOR          = "app-users-editor";   //$NON-NLS-1$
+  String ICONID_KINDS_LIST           = "ability-kinds-list"; //$NON-NLS-1$
+  String ICONID_KIND                 = "ability-kind";       //$NON-NLS-1$
+  String ICONID_ABILITY              = "ability";            //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
   // Actions
