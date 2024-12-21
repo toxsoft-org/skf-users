@@ -1,8 +1,6 @@
 package org.toxsoft.skf.users.gui.km5;
 
-import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
-import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tslib.utils.errors.*;
@@ -30,12 +28,17 @@ public class SkAbilityM5Model
     setNameAndDescription( STR_N_ABILITY, STR_D_ABILITY );
     // attributes
     ISkClassInfo cinf = skSysdescr().getClassInfo( ISkAbility.CLASS_ID );
-    KM5AttributeFieldDef<ISkAbility> enable = //
-        new KM5AttributeFieldDef<>( cinf.attrs().list().getByKey( ATRID_ABILITY_IS_ENABLED ) );
-    enable.setNameAndDescription( STR_N_FDEF_ENABLE, STR_D_FDEF_ENABLE );
-    enable.setFlags( M5FF_COLUMN | M5FF_READ_ONLY );
+
+    // GOGA --- ability enabled state was removed from API
+    // KM5AttributeFieldDef<ISkAbility> enable = //
+    // new KM5AttributeFieldDef<>( cinf.attrs().list().getByKey( ATRID_ABILITY_IS_ENABLED ) );
+    // enable.setNameAndDescription( STR_N_FDEF_ENABLE, STR_D_FDEF_ENABLE );
+    // enable.setFlags( M5FF_COLUMN | M5FF_READ_ONLY );
+    // addFieldDefs( NAME, enable, DESCRIPTION );
+    // ---
+
     // add fields
-    addFieldDefs( NAME, enable, DESCRIPTION );
+    addFieldDefs( NAME, DESCRIPTION );
   }
 
   @Override
