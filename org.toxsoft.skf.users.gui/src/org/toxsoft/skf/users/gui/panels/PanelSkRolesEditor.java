@@ -67,24 +67,37 @@ public class PanelSkRolesEditor
     panelRoles.createControl( sf );
     panelRoles.getControl().setLayoutData( BorderLayout.CENTER );
 
-    ITsGuiContext ctx2 = new TsGuiContext( tsContext() );
-    panelRoleDetail = model.panelCreator().createEntityEditorPanel( ctx2, lm );
+    CTabFolder tabFolder = new CTabFolder( sf, SWT.BORDER );
+    tabFolder.setLayout( new BorderLayout() );
+
+    // --- Panel 1.
+    CTabItem tabItem = new CTabItem( tabFolder, SWT.NONE );
+    tabItem.setText( "Свойства" );
+
+    panelRoleDetail = model.panelCreator().createEntityEditorPanel( ctx, lm );
     panelRoleDetail.setEditable( false );
+    AbstractContentPanel contentPanel = new InplaceContentM5EntityPanelWrapper<>( ctx, panelRoleDetail );
+    inplaceRoleDetail = new InplaceEditorContainerPanel( ctx, contentPanel );
 
-    AbstractContentPanel contentPanel = new InplaceContentM5EntityPanelWrapper<>( ctx2, panelRoleDetail );
-    inplaceRoleDetail = new InplaceEditorContainerPanel( ctx2, contentPanel );
+    tabItem.setControl( inplaceRoleDetail.createControl( tabFolder ) );
 
-    inplaceRoleDetail.createControl( sf );
-    inplaceRoleDetail.getControl().setLayoutData( BorderLayout.CENTER );
-    // panelRoleDetail.createControl( sf );
+    // --- Panel 2.
+    CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
+    tabItem2.setText( "Возможности" );
 
-    // panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
-    // panelRoleDetail.setEntity( aSelectedItem );
-    // } );
+    // --- Panel 3.
+    CTabItem tabItem3 = new CTabItem( tabFolder, SWT.NONE );
+    tabItem3.setText( "Матрица доступа" );
 
-    // if( panelRoles.items().size() > 0 ) {
-    // panelRoles.setSelectedItem( panelRoles.items().first() );
-    // }
+    panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
+      panelRoleDetail.setEntity( aSelectedItem );
+    } );
+
+    // Prepare for display.
+    if( panelRoles.items().size() > 0 ) {
+      panelRoles.setSelectedItem( panelRoles.items().first() );
+    }
+    tabFolder.setSelection( tabItem );
   }
 
   // ------------------------------------------------------------------------------------
