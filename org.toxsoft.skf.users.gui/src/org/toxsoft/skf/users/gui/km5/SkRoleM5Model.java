@@ -7,19 +7,17 @@ import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
 import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
-import org.toxsoft.core.tsgui.bricks.ctx.ITsGuiContext;
-import org.toxsoft.core.tsgui.m5.gui.mpc.impl.MultiPaneComponentModown;
-import org.toxsoft.core.tsgui.m5.gui.panels.IM5CollectionPanel;
-import org.toxsoft.core.tsgui.m5.gui.panels.impl.M5CollectionPanelMpcModownWrapper;
-import org.toxsoft.core.tsgui.m5.model.IM5ItemsProvider;
-import org.toxsoft.core.tsgui.m5.model.IM5LifecycleManager;
-import org.toxsoft.core.tsgui.m5.model.impl.M5DefaultPanelCreator;
-import org.toxsoft.core.tslib.utils.errors.TsNullArgumentRtException;
-import org.toxsoft.uskat.core.api.sysdescr.ISkClassInfo;
-import org.toxsoft.uskat.core.api.users.ISkRole;
-import org.toxsoft.uskat.core.connection.ISkConnection;
-import org.toxsoft.uskat.core.gui.km5.KM5AttributeFieldDef;
-import org.toxsoft.uskat.core.gui.km5.KM5ModelBasic;
+import org.toxsoft.core.tsgui.bricks.ctx.*;
+import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
+import org.toxsoft.core.tsgui.m5.gui.panels.*;
+import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
+import org.toxsoft.core.tsgui.m5.model.*;
+import org.toxsoft.core.tsgui.m5.model.impl.*;
+import org.toxsoft.core.tslib.utils.errors.*;
+import org.toxsoft.uskat.core.api.sysdescr.*;
+import org.toxsoft.uskat.core.api.users.*;
+import org.toxsoft.uskat.core.connection.*;
+import org.toxsoft.uskat.core.gui.km5.*;
 
 /**
  * M5-model of {@link ISkRole}.
@@ -40,6 +38,9 @@ class SkRoleM5Model
     setNameAndDescription( STR_N_ROLE, STR_D_ROLE );
     ISkClassInfo cinf = skSysdescr().getClassInfo( ISkRole.CLASS_ID );
     // attributes
+    KM5AttributeFieldDef<ISkRole> strid = //
+        new KM5AttributeFieldDef<>( cinf.attrs().list().getByKey( AID_STRID ) );
+    strid.setFlags( M5FF_HIDDEN );
     KM5AttributeFieldDef<ISkRole> roleId = //
         new KM5AttributeFieldDef<>( cinf.attrs().list().getByKey( AID_STRID ) );
     roleId.setFlags( M5FF_INVARIANT );
@@ -55,7 +56,7 @@ class SkRoleM5Model
     // fields
     NAME.setNameAndDescription( STR_N_FDEF_NAME, STR_D_FDEF_NAME );
     DESCRIPTION.setNameAndDescription( STR_N_FDEF_DESCR, STR_D_FDEF_DESCR );
-    addFieldDefs( roleId, NAME, active, hidden, DESCRIPTION );
+    addFieldDefs( strid, roleId, NAME, active, hidden, DESCRIPTION );
     setPanelCreator( new M5DefaultPanelCreator<>() {
 
       @Override

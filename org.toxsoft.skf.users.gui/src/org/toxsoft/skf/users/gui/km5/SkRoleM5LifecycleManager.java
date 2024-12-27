@@ -45,6 +45,7 @@ public class SkRoleM5LifecycleManager
     String id = aValues.getAsAv( AID_STRID ).asString();
     Skid skid = new Skid( ISkRole.CLASS_ID, id );
     DtoObject dtoRole = DtoObject.createDtoObject( skid, coreApi() );
+    dtoRole.attrs().setValue( AID_STRID, aValues.getAsAv( AID_STRID ) );
     dtoRole.attrs().setValue( ATRID_ROLE_IS_ENABLED, aValues.getAsAv( ATRID_ROLE_IS_ENABLED ) );
     dtoRole.attrs().setValue( ATRID_ROLE_IS_HIDDEN, aValues.getAsAv( ATRID_ROLE_IS_HIDDEN ) );
     dtoRole.attrs().setValue( FID_NAME, aValues.getAsAv( FID_NAME ) );

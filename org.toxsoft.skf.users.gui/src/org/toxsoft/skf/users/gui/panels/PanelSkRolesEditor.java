@@ -11,8 +11,8 @@ import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
+import org.toxsoft.core.tsgui.panels.inpled.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
-import org.toxsoft.core.tsgui.widgets.*;
 import org.toxsoft.core.tslib.bricks.strid.more.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.skf.users.gui.km5.*;
@@ -28,6 +28,7 @@ public class PanelSkRolesEditor
     extends AbstractSkStdEventsProducerLazyPanel<ISkRole> {
 
   private IM5CollectionPanel<ISkRole> panelRoles;
+  private IInplaceEditorPanel         inplaceRoleDetail;
   private IM5EntityPanel<ISkRole>     panelRoleDetail;
 
   /**
@@ -66,29 +67,24 @@ public class PanelSkRolesEditor
     panelRoles.createControl( sf );
     panelRoles.getControl().setLayoutData( BorderLayout.CENTER );
 
-    CTabFolder tabFolder = new CTabFolder( sf, SWT.BORDER );
-    tabFolder.setLayout( new BorderLayout() );
+    ITsGuiContext ctx2 = new TsGuiContext( tsContext() );
+    panelRoleDetail = model.panelCreator().createEntityEditorPanel( ctx2, lm );
+    panelRoleDetail.setEditable( false );
 
-    panelRoleDetail = model.panelCreator().createEntityEditorPanel( ctx, lm );
+    AbstractContentPanel contentPanel = new InplaceContentM5EntityPanelWrapper<>( ctx2, panelRoleDetail );
+    inplaceRoleDetail = new InplaceEditorContainerPanel( ctx2, contentPanel );
 
-    CTabItem tabItem = new CTabItem( tabFolder, SWT.NONE );
-    tabItem.setText( "Свойства" );
+    inplaceRoleDetail.createControl( sf );
+    inplaceRoleDetail.getControl().setLayoutData( BorderLayout.CENTER );
+    // panelRoleDetail.createControl( sf );
 
-    TsComposite frameDetail = new TsComposite( tabFolder );
-    frameDetail.setLayout( new BorderLayout() );
+    // panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
+    // panelRoleDetail.setEntity( aSelectedItem );
+    // } );
 
-    tabItem.setControl( frameDetail );
-    panelRoleDetail.createControl( frameDetail );
-
-    CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
-    tabItem2.setText( "Возможности" );
-
-    CTabItem tabItem3 = new CTabItem( tabFolder, SWT.NONE );
-    tabItem3.setText( "Матрица доступа" );
-
-    if( tabFolder.getSelectionIndex() < 0 ) {
-      tabFolder.setSelection( 0 );
-    }
+    // if( panelRoles.items().size() > 0 ) {
+    // panelRoles.setSelectedItem( panelRoles.items().first() );
+    // }
   }
 
   // ------------------------------------------------------------------------------------
@@ -103,7 +99,6 @@ public class PanelSkRolesEditor
   @Override
   protected void doSetSelectedItem( ISkRole aItem ) {
     panelRoles.setSelectedItem( aItem );
-    panelRoleDetail.setEntity( aItem );
   }
 
 }
