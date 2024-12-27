@@ -5,6 +5,7 @@ import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
 import org.toxsoft.core.tsgui.m5.*;
+import org.toxsoft.core.tslib.bricks.strid.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.gw.skid.*;
@@ -43,6 +44,9 @@ public class SkRoleM5LifecycleManager
   private IDtoObject makeRoleDto( IM5Bunch<ISkRole> aValues ) {
     // Создаем IDpuObject и инициализируем его значениями из пучка
     String id = aValues.getAsAv( AID_STRID ).asString();
+    if( id.isBlank() ) {
+      id = IStridable.NONE_ID;
+    }
     Skid skid = new Skid( ISkRole.CLASS_ID, id );
     DtoObject dtoRole = DtoObject.createDtoObject( skid, coreApi() );
     dtoRole.attrs().setValue( AID_STRID, aValues.getAsAv( AID_STRID ) );
