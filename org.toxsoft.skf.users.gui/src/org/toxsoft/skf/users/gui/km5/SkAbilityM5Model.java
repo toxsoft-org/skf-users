@@ -17,6 +17,46 @@ import org.toxsoft.uskat.core.gui.km5.*;
 public class SkAbilityM5Model
     extends KM5ModelBasic<ISkAbility> {
 
+  public static final String AID_ENABLE = "enable"; //$NON-NLS-1$
+
+  // public final IM5AttributeFieldDef<ISkAbility> ROLEID =
+  // new M5AttributeFieldDef<>( AID_ENABLE, IAvMetaConstants.DDEF_STRING, //
+  // TSID_NAME, "", //
+  // TSID_DESCRIPTION, "", //
+  // TSID_DEFAULT_VALUE, avStr( NONE_ID ) //
+  // ) {
+  //
+  // @Override
+  // protected void doInit() {
+  // setFlags( M5FF_COLUMN | M5FF_READ_ONLY );
+  // }
+  //
+  // @Override
+  // protected IAtomicValue doGetFieldValue( ISkAbility aEntity ) {
+  // return AvUtils.avStr( aEntity. );
+  // }
+  //
+  // };
+
+  // public final IM5AttributeFieldDef<ISkAbility> ENABLE =
+  // new M5AttributeFieldDef<>( AID_ENABLE, IAvMetaConstants.DDEF_TS_BOOL, //
+  // TSID_NAME, STR_N_FDEF_ENABLE, //
+  // TSID_DESCRIPTION, STR_D_FDEF_ENABLE, //
+  // TSID_DEFAULT_VALUE, avStr( NONE_ID ) //
+  // ) {
+  //
+  // @Override
+  // protected void doInit() {
+  // setFlags( M5FF_COLUMN | M5FF_READ_ONLY );
+  // }
+  //
+  // @Override
+  // protected IAtomicValue doGetFieldValue( ISkAbility aEntity ) {
+  // return AvUtils.avBool( abilityManager().isAbilityAllowed( aEntity.id() ) );
+  // }
+  //
+  // };
+
   /**
    * Constructor.
    *
@@ -38,7 +78,7 @@ public class SkAbilityM5Model
     // ---
 
     // add fields
-    addFieldDefs( NAME, DESCRIPTION );
+    addFieldDefs( NAME, DESCRIPTION );// , ENABLE );
   }
 
   @Override
@@ -51,6 +91,10 @@ public class SkAbilityM5Model
   protected IM5LifecycleManager<ISkAbility> doCreateLifecycleManager( Object aMaster ) {
     ISkConnection master = ISkConnection.class.cast( aMaster );
     return new SkAbilityM5LifecycleManager( this, master );
+  }
+
+  private ISkAbilityManager abilityManager() {
+    return coreApi().userService().abilityManager();
   }
 
 }

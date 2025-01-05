@@ -29,8 +29,8 @@ public class SkAbilityMpc
     extends MultiPaneComponentModown<ISkAbility>
     implements ISkConnected {
 
-  static final ITsNodeKind<ISkAbilityKind> NK_KIND    = new TsNodeKind<>( "LeafKind", ISkAbilityKind.class, false ); //$NON-NLS-1$
-  static final ITsNodeKind<ISkAbility>     NK_ABILITY = new TsNodeKind<>( "NodeAbility", ISkAbility.class, true );   //$NON-NLS-1$
+  static final ITsNodeKind<ISkAbilityKind> NK_KIND    = new TsNodeKind<>( "LeafKind", ISkAbilityKind.class, true ); //$NON-NLS-1$
+  static final ITsNodeKind<ISkAbility>     NK_ABILITY = new TsNodeKind<>( "NodeAbility", ISkAbility.class, false ); //$NON-NLS-1$
 
   /**
    * Tree maker groups abilities by kinds.
@@ -89,7 +89,7 @@ public class SkAbilityMpc
 
     @Override
     public boolean isItemNode( ITsNode aNode ) {
-      return aNode.kind() == NK_KIND;
+      return aNode.kind() == NK_ABILITY;
     }
 
   }
