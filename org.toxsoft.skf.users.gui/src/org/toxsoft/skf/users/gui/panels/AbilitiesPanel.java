@@ -63,13 +63,13 @@ public class AbilitiesPanel
       for( ISkAbility ability : panelAbilities.tree().checks().listCheckedItems( false ) ) {
         abilityIds.add( ability.id() );
       }
-      abilityManager().setRoleAbilities( role.id(), abilityIds, false );
+      abilityManager().changeRoleAbilities( role.id(), abilityIds, false );
       //
       abilityIds.clear();
       for( ISkAbility ability : panelAbilities.tree().checks().listCheckedItems( true ) ) {
         abilityIds.add( ability.id() );
       }
-      abilityManager().setRoleAbilities( role.id(), abilityIds, true );
+      abilityManager().changeRoleAbilities( role.id(), abilityIds, true );
     } );
 
     initializeAbilitiesChecks();
