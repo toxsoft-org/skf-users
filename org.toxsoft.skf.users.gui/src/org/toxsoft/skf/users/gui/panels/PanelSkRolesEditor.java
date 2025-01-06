@@ -89,8 +89,8 @@ public class PanelSkRolesEditor
     CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
     tabItem2.setText( "Возможности" );
 
-    // panelAbilities = new AbilitiesPanel( ctx );
-    // tabItem2.setControl( panelAbilities.createControl( tabFolder ) );
+    panelAbilities = new AbilitiesPanel( ctx );
+    tabItem2.setControl( panelAbilities.createControl( tabFolder ) );
 
     // --- Panel 3.
     CTabItem tabItem3 = new CTabItem( tabFolder, SWT.NONE );
@@ -98,11 +98,11 @@ public class PanelSkRolesEditor
 
     panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
       panelRoleDetail.setEntity( aSelectedItem );
-      // panelAbilities.setRole( aSelectedItem );
+      panelAbilities.setRole( aSelectedItem );
     } );
 
     // Prepare for view.
-    // panelRoles.setSelectedItem( panelRoles.items().first() );
+    panelRoles.setSelectedItem( panelRoles.items().first() );
     tabFolder.setSelection( tabItem );
   }
 
