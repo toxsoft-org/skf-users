@@ -36,6 +36,11 @@ public class AbilitiesPanel
   @Override
   public void setRole( ISkRole aRole ) {
     role = aRole;
+
+    // When immutable role then non editable abilities!
+    panelAbilities.setEditable( !ISkUserServiceHardConstants.isImmutableRole( role.id() ) );
+
+    initializeRoleAbilities();
   }
 
   @Override
@@ -54,25 +59,10 @@ public class AbilitiesPanel
 
     panelAbilities = new SkAbilityMpc( ctx, model, lm.itemsProvider(), lm );
     panelAbilities.tree().checks().checksChangeEventer().addListener( aSource -> {
-      // Changing abilities state.
-      if( role == null ) {
-        return;
-      }
-      //
-      IStringListEdit abilityIds = new StringLinkedBundleList();
-      for( ISkAbility ability : panelAbilities.tree().checks().listCheckedItems( false ) ) {
-        abilityIds.add( ability.id() );
-      }
-      abilityManager().changeRoleAbilities( role.id(), abilityIds, false );
-      //
-      abilityIds.clear();
-      for( ISkAbility ability : panelAbilities.tree().checks().listCheckedItems( true ) ) {
-        abilityIds.add( ability.id() );
-      }
-      abilityManager().changeRoleAbilities( role.id(), abilityIds, true );
+      changeRoleAbilities();
     } );
 
-    initializeAbilitiesChecks();
+    initializeRoleAbilities();
 
     return panelAbilities.createControl( aParent );
   }
@@ -85,11 +75,34 @@ public class AbilitiesPanel
     return coreApi().userService().abilityManager();
   }
 
-  private void initializeAbilitiesChecks() {
+  /**
+   * Initializing abilities of role.
+   */
+  private void initializeRoleAbilities() {
     for( ISkAbility ability : panelAbilities.tree().items() ) {
       panelAbilities.tree().checks().setItemCheckState( ability,
           abilityManager().isAbilityAllowed( role.id(), ability.id() ) );
     }
+    panelAbilities.tree().refresh();
+  }
+
+  /**
+   * Changing abilities of role.
+   */
+  private void changeRoleAbilities() {
+    if( role == null ) {
+      return;
+    }
+    if( ISkUserServiceHardConstants.isImmutableRole( role.id() ) ) {
+      // When immutable role then non editable abilities!
+      return;
+    }
+
+    IStringListEdit enableAbilityIds = new StringLinkedBundleList();
+    for( ISkAbility ability : panelAbilities.tree().checks().listCheckedItems( true ) ) {
+      enableAbilityIds.add( ability.id() );
+    }
+    abilityManager().setRoleAbilities( role.id(), enableAbilityIds );
   }
 
 }

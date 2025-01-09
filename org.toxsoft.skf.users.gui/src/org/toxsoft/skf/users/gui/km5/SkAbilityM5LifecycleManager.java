@@ -62,6 +62,7 @@ public class SkAbilityM5LifecycleManager
 
   @Override
   protected IList<ISkAbility> doListEntities() {
+    // Returns all existing abilites.
     return abilityManager().listAbilities();
   }
 
