@@ -8,7 +8,11 @@ import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.model.*;
+import org.toxsoft.core.tsgui.utils.checkcoll.*;
 import org.toxsoft.core.tsgui.utils.layout.*;
+import org.toxsoft.core.tslib.bricks.events.change.*;
+import org.toxsoft.core.tslib.coll.*;
+import org.toxsoft.core.tslib.coll.impl.*;
 import org.toxsoft.core.tslib.coll.primtypes.*;
 import org.toxsoft.core.tslib.coll.primtypes.impl.*;
 import org.toxsoft.skf.users.gui.incub.*;
@@ -25,9 +29,9 @@ public class AbilitiesPanel
     extends AbstractSkLazyControl
     implements IAbilitiesPanel {
 
-  private ISkRole role;
-
-  private SkAbilityMpc panelAbilities;
+  private ISkRole                role;
+  private IGenericChangeListener checksChangeListener;
+  private SkAbilityMpc           panelAbilities;
 
   public AbilitiesPanel( ITsGuiContext aContext ) {
     super( aContext );
@@ -57,10 +61,10 @@ public class AbilitiesPanel
     OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
     OPDEF_IS_SUPPORTS_CHECKS.setValue( ctx.params(), AV_TRUE );
 
+    checksChangeListener = aSource -> changeRoleAbilities();
+
     panelAbilities = new SkAbilityMpc( ctx, model, lm.itemsProvider(), lm );
-    panelAbilities.tree().checks().checksChangeEventer().addListener( aSource -> {
-      changeRoleAbilities();
-    } );
+    panelAbilities.tree().checks().checksChangeEventer().addListener( checksChangeListener );
 
     initializeRoleAbilities();
 
@@ -79,10 +83,21 @@ public class AbilitiesPanel
    * Initializing abilities of role.
    */
   private void initializeRoleAbilities() {
+    IListEdit<ISkAbility> enableAbilities = new ElemArrayList<ISkAbility>();
+    IListEdit<ISkAbility> disableAbilities = new ElemArrayList<ISkAbility>();
     for( ISkAbility ability : panelAbilities.tree().items() ) {
-      panelAbilities.tree().checks().setItemCheckState( ability,
-          abilityManager().isAbilityAllowed( role.id(), ability.id() ) );
+      if( abilityManager().isAbilityAllowed( role.id(), ability.id() ) ) {
+        enableAbilities.add( ability );
+      }
+      else {
+        disableAbilities.add( ability );
+      }
     }
+    ITsCheckSupport<ISkAbility> checks = panelAbilities.tree().checks();
+    checks.checksChangeEventer().muteListener( checksChangeListener );
+    checks.setItemsCheckState( enableAbilities, true );
+    checks.setItemsCheckState( disableAbilities, false );
+    checks.checksChangeEventer().unmuteListener( checksChangeListener );
     panelAbilities.tree().refresh();
   }
 
