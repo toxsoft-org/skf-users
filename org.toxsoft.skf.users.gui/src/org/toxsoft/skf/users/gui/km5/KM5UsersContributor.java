@@ -25,6 +25,7 @@ public class KM5UsersContributor
   private static final IStringList CONRTIBUTED_MODEL_IDS = new StringArrayList( //
       ISkRole.CLASS_ID, //
       ISkUser.CLASS_ID, //
+      SkUserRolesM5Model.CLASS_ID, //
       ISkAbilityKind.CLASS_ID, //
       ISkAbility.CLASS_ID //
   );
@@ -44,6 +45,7 @@ public class KM5UsersContributor
   protected IStringList papiCreateModels() {
     m5().addModel( new SkRoleM5Model( skConn() ) );
     m5().addModel( new SkUserM5Model( skConn() ) );
+    m5().addModel( new SkUserRolesM5Model( skConn() ) );
     m5().addModel( new SkAbilityKindM5Model( skConn() ) );
     m5().addModel( new SkAbilityM5Model( skConn() ) );
     return CONRTIBUTED_MODEL_IDS;

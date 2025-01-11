@@ -51,14 +51,15 @@ class SkUserM5Model
     hidden.setNameAndDescription( STR_N_FDEF_HIDDEN, STR_D_FDEF_HIDDEN );
     hidden.setFlags( M5FF_COLUMN );
     // links
-    KM5MultiLinkFieldDef roles = //
-        new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
+    // KM5MultiLinkFieldDef roles = //
+    // new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
     // KM5MultiLinkFieldDef abilities = //
     // new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
     NAME.setNameAndDescription( STR_N_FDEF_NAME, STR_D_FDEF_NAME );
     DESCRIPTION.setNameAndDescription( STR_N_FDEF_DESCR, STR_D_FDEF_DESCR );
     // add fields
-    addFieldDefs( login, NAME, active, hidden, DESCRIPTION, roles );
+    addFieldDefs( login, NAME, active, hidden, DESCRIPTION );
+    // addFieldDefs( login, NAME, active, hidden, DESCRIPTION, roles );
     // panels creator
     setPanelCreator( new M5DefaultPanelCreator<>() {
 
