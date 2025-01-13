@@ -51,7 +51,7 @@ public class PanelSkRolesEditor
 
   @Override
   protected void doInitGui( Composite aParent ) {
-    prepareDebugAbilities();
+    // prepareDebugAbilities();
 
     SashForm sf = new SashForm( aParent, SWT.HORIZONTAL );
 

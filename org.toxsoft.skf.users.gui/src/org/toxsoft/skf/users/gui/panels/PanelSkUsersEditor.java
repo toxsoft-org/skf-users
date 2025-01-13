@@ -30,7 +30,7 @@ public class PanelSkUsersEditor
   private IM5CollectionPanel<ISkUser> panelUsers;
   private IInplaceEditorPanel         inplaceRoleDetail;
   private IM5EntityPanel<ISkUser>     panelUserDetail;
-  private IM5EntityPanel<ISkUser>     panelUserRolesDetail;
+  private UserRolesPanel              panelUserRoles;
 
   /**
    * Constructor.
@@ -85,21 +85,16 @@ public class PanelSkUsersEditor
     CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
     tabItem2.setText( "Роли пользователя" );
 
-    IM5Model<ISkUser> model2 = m5().getModel( SkUserRolesM5Model.CLASS_ID, ISkUser.class );
-    IM5LifecycleManager<ISkUser> lm2 = new SkUserM5LifecycleManager( model2, skConn() );
-    ITsGuiContext ctx2 = new TsGuiContext( tsContext() );
-    ctx2.params().addAll( tsContext().params() );
+    panelUserRoles = new UserRolesPanel( ctx );
 
-    panelUserRolesDetail = model2.panelCreator().createEntityEditorPanel( ctx2, lm2 );
+    panelUserRoles.createControl( tabFolder );
+    panelUserRoles.getControl().setLayoutData( BorderLayout.CENTER );
 
-    panelUserRolesDetail.createControl( tabFolder );
-    panelUserRolesDetail.getControl().setLayoutData( BorderLayout.CENTER );
-
-    tabItem2.setControl( panelUserRolesDetail.getControl() );
+    tabItem2.setControl( panelUserRoles.getControl() );
 
     panelUsers.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
       panelUserDetail.setEntity( aSelectedItem );
-      panelUserRolesDetail.setEntity( aSelectedItem );
+      panelUserRoles.setUser( aSelectedItem );
     } );
 
     // Prepare for view.
