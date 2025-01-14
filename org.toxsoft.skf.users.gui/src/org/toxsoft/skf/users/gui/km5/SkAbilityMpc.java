@@ -111,6 +111,9 @@ public class SkAbilityMpc
     TreeModeInfo<ISkAbility> tmiByKide = new TreeModeInfo<>( "ByKind", //$NON-NLS-1$
         STR_N_TMI_BY_KINDS, STR_D_TMI_BY_KINDS, ICONID_KINDS_LIST, new TreeMakerByKind() );
     treeModeManager().addTreeMode( tmiByKide );
+    // Default value is tree view.
+    treeModeManager().setCurrentMode( "ByKind" ); //$NON-NLS-1$
+
   }
 
   // ------------------------------------------------------------------------------------

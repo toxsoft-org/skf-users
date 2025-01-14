@@ -2,6 +2,7 @@ package org.toxsoft.skf.users.gui.panels;
 
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
+import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.custom.*;
@@ -77,7 +78,7 @@ public class PanelSkRolesEditor
 
     // --- Panel 1.
     CTabItem tabItem = new CTabItem( tabFolder, SWT.NONE );
-    tabItem.setText( "Свойства" );
+    tabItem.setText( STR_TAB_ROLE_PROPERTIES );
 
     panelRoleDetail = model.panelCreator().createEntityEditorPanel( ctx, lm );
     panelRoleDetail.setEditable( false );
@@ -87,14 +88,14 @@ public class PanelSkRolesEditor
 
     // --- Panel 2.
     CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
-    tabItem2.setText( "Возможности" );
+    tabItem2.setText( STR_TAB_ROLE_ABILITIES );
 
     panelAbilities = new AbilitiesPanel( ctx );
     tabItem2.setControl( panelAbilities.createControl( tabFolder ) );
 
     // --- Panel 3.
     CTabItem tabItem3 = new CTabItem( tabFolder, SWT.NONE );
-    tabItem3.setText( "Матрица доступа" );
+    tabItem3.setText( STR_TAB_ROLE_ACCESS );
 
     panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
       panelRoleDetail.setEntity( aSelectedItem );
