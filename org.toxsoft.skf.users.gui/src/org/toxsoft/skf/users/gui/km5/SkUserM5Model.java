@@ -58,7 +58,6 @@ class SkUserM5Model
     NAME.setNameAndDescription( STR_N_FDEF_NAME, STR_D_FDEF_NAME );
     DESCRIPTION.setNameAndDescription( STR_N_FDEF_DESCR, STR_D_FDEF_DESCR );
     // add fields
-    // addFieldDefs( login, NAME, active, hidden, DESCRIPTION );
     addFieldDefs( login, NAME, active, hidden, DESCRIPTION, roles );
     // panels creator
     setPanelCreator( new M5DefaultPanelCreator<>() {

@@ -1,6 +1,7 @@
 package org.toxsoft.skf.users.gui;
 
 import org.toxsoft.skf.users.gui.km5.*;
+import org.toxsoft.skf.users.gui.panels.*;
 
 /**
  * Localizable resources.
@@ -74,5 +75,18 @@ public interface ISkUsersGuiSharedResources {
   String STR_ABKIND_USER_ROLES_D               = Messages.getString( "STR_ABKIND_USER_ROLES_D" );               //$NON-NLS-1$
   String STR_ABILITY_ACCESS_USER_ROLE_EDITOR   = Messages.getString( "STR_ABILITY_ACCESS_USER_ROLE_EDITOR" );   //$NON-NLS-1$
   String STR_ABILITY_ACCESS_USER_ROLE_EDITOR_D = Messages.getString( "STR_ABILITY_ACCESS_USER_ROLE_EDITOR_D" ); //$NON-NLS-1$
+
+  /**
+   * {@link PanelSkUsersEditor}
+   */
+  String STR_TAB_USER_PROPERTIES = Messages.getString( "STR_TAB_USER_PROPERTIES" ); //$NON-NLS-1$
+  String STR_TAB_USER_ROLES      = Messages.getString( "STR_TAB_USER_ROLES" );      //$NON-NLS-1$
+
+  /**
+   * {@link PanelSkRolesEditor}
+   */
+  String STR_TAB_ROLE_PROPERTIES = Messages.getString( "STR_TAB_ROLE_PROPERTIES" ); //$NON-NLS-1$
+  String STR_TAB_ROLE_ABILITIES  = Messages.getString( "STR_TAB_ROLE_ABILITIES" );  //$NON-NLS-1$
+  String STR_TAB_ROLE_ACCESS     = Messages.getString( "STR_TAB_ROLE_ACCESS" );     //$NON-NLS-1$
 
 }

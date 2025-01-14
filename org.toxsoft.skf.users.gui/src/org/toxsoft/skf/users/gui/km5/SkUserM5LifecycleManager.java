@@ -71,9 +71,10 @@ public class SkUserM5LifecycleManager
   @Override
   protected ValidationResult doBeforeEdit( IM5Bunch<ISkUser> aValues ) {
     String id = aValues.getAsAv( AID_STRID ).asString();
-    if( !StridUtils.isValidIdPath( id ) ) {
-      return ValidationResult.error( MSG_ERR_LOGIN_NOT_IDPATH );
-    }
+    // Slavage:
+    // if( !StridUtils.isValidIdPath( id ) ) {
+    // return ValidationResult.error( MSG_ERR_LOGIN_NOT_IDPATH );
+    // }
     IDtoFullObject dtoUser = makeUserDto( aValues, coreApi() );
     return userService().svs().validator().canEditUser( dtoUser, aValues.originalEntity() );
   }
