@@ -14,9 +14,10 @@ public interface ISkUsersMwsConstants {
   // ------------------------------------------------------------------------------------
   // E4
 
-  String PERSPID_SK_USERS_MAIN               = "org.toxsoft.uskat.users.persp.main";               //$NON-NLS-1$
-  String PARTSTACKID_SK_USERS_MAIN_EXTENSION = "org.toxsoft.uskat.users.partstack.main_extension"; //$NON-NLS-1$
-
+  String PARTSTACKID_SK_USERS_MAIN_EXTENSION     = "org.toxsoft.uskat.users.partstack.main_extension";            //$NON-NLS-1$
+  String E4_VISUAL_ELEM_ID_PERSP_USERS_ROLES     = "org.toxsoft.uskat.users.persp.main";                          //$NON-NLS-1$
+  String E4_VISUAL_ELEM_ID_MENU_ITEM_USERS_ROLES = "org.toxsoft.skf.users.mws.handledmenuitem.persp_skusersmain"; //$NON-NLS-1$
+  String E4_VISUAL_ELEM_ID_TOOL_ITEM_USERS_ROLES = "org.toxsoft.skf.users.mws.handledtoolitem.persp_skusersmain"; //$NON-NLS-1$
   // ------------------------------------------------------------------------------------
   // Icons
 

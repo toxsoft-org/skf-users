@@ -7,6 +7,9 @@ import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import org.eclipse.e4.core.contexts.*;
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.graphics.icons.*;
+import org.toxsoft.uskat.core.api.users.*;
+import org.toxsoft.uskat.core.api.users.ability.*;
+import org.toxsoft.uskat.core.impl.dto.*;
 
 /**
  * Plugin constants.
@@ -40,6 +43,28 @@ public interface ISkUsersGuiConstants {
 
   TsActionDef ACDEF_CHANGE_PASSWORD = TsActionDef.ofPush2( ACTID_CHANGE_PASSWORD, //
       STR_N_CHANGE_PASSWORD, STR_D_CHANGE_PASSWORD, ICONID_DIALOG_PASSWORD );
+
+  /**
+   * id тип возможности «Редактор пользователей и ролей»
+   */
+  String ABKINDID_USER_ROLES = ISkUserService.SERVICE_ID + ".abkind.user.roles"; //$NON-NLS-1$
+
+  /**
+   * создание «своего» типа
+   */
+  IDtoSkAbilityKind ABKIND_USER_ROLES =
+      DtoSkAbilityKind.create( ABKINDID_USER_ROLES, STR_ABKIND_USER_ROLES, STR_ABKIND_USER_ROLES_D );
+
+  /**
+   * Create id ability to access user/roles editor
+   */
+  String ABILITYID_USER_ROLE_EDITOR = ISkUserService.SERVICE_ID + ".ability.user.roles.editor"; //$NON-NLS-1$
+
+  /**
+   * Create ability to access values editor
+   */
+  IDtoSkAbility ABILITY_ACCESS_USER_ROLE_EDITOR = DtoSkAbility.create( ABILITYID_USER_ROLE_EDITOR, ABKINDID_USER_ROLES,
+      STR_ABILITY_ACCESS_USER_ROLE_EDITOR, STR_ABILITY_ACCESS_USER_ROLE_EDITOR_D );
 
   /**
    * Constants registration.

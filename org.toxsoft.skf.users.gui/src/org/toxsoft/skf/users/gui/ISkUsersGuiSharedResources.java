@@ -66,9 +66,13 @@ public interface ISkUsersGuiSharedResources {
   /**
    * {@link ISkUsersGuiConstants}
    */
-  String STR_N_NO_HIDDEN_USERS = Messages.getString( "STR_N_NO_HIDDEN_USERS" ); //$NON-NLS-1$
-  String STR_D_NO_HIDDEN_USERS = Messages.getString( "STR_D_NO_HIDDEN_USERS" ); //$NON-NLS-1$
-  String STR_N_CHANGE_PASSWORD = Messages.getString( "STR_N_CHANGE_PASSWORD" ); //$NON-NLS-1$
-  String STR_D_CHANGE_PASSWORD = Messages.getString( "STR_D_CHANGE_PASSWORD" ); //$NON-NLS-1$
+  String STR_N_NO_HIDDEN_USERS                 = Messages.getString( "STR_N_NO_HIDDEN_USERS" );                 //$NON-NLS-1$
+  String STR_D_NO_HIDDEN_USERS                 = Messages.getString( "STR_D_NO_HIDDEN_USERS" );                 //$NON-NLS-1$
+  String STR_N_CHANGE_PASSWORD                 = Messages.getString( "STR_N_CHANGE_PASSWORD" );                 //$NON-NLS-1$
+  String STR_D_CHANGE_PASSWORD                 = Messages.getString( "STR_D_CHANGE_PASSWORD" );                 //$NON-NLS-1$
+  String STR_ABKIND_USER_ROLES                 = Messages.getString( "STR_ABKIND_USER_ROLES" );                 //$NON-NLS-1$
+  String STR_ABKIND_USER_ROLES_D               = Messages.getString( "STR_ABKIND_USER_ROLES_D" );               //$NON-NLS-1$
+  String STR_ABILITY_ACCESS_USER_ROLE_EDITOR   = Messages.getString( "STR_ABILITY_ACCESS_USER_ROLE_EDITOR" );   //$NON-NLS-1$
+  String STR_ABILITY_ACCESS_USER_ROLE_EDITOR_D = Messages.getString( "STR_ABILITY_ACCESS_USER_ROLE_EDITOR_D" ); //$NON-NLS-1$
 
 }
