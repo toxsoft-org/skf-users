@@ -1,6 +1,7 @@
 package org.toxsoft.skf.users.skide;
 
 import org.toxsoft.skf.users.skide.main.*;
+import org.toxsoft.skf.users.skide.tasks.upload.*;
 
 /**
  * Localizable resources.
@@ -23,5 +24,10 @@ public interface ISkfUsersSkideSharedResources {
   String STR_TAB_USERS_D = Messages.getString( "STR_TAB_USERS_D" ); //$NON-NLS-1$
   String STR_TAB_ROLES   = Messages.getString( "STR_TAB_ROLES" );   //$NON-NLS-1$
   String STR_TAB_ROLES_D = Messages.getString( "STR_TAB_ROLES_D" ); //$NON-NLS-1$
+
+  /**
+   * {@link TaskUsersUpload}
+   */
+  String FMT_INFO_USERS_UPLOADED = Messages.getString( "FMT_INFO_USERS_UPLOADED" ); //$NON-NLS-1$
 
 }

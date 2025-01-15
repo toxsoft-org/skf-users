@@ -1,8 +1,11 @@
 package org.toxsoft.skf.users.skide.e4.addons;
 
 import org.eclipse.e4.core.contexts.*;
+import org.toxsoft.core.tsgui.bricks.quant.*;
 import org.toxsoft.core.tsgui.mws.bases.*;
+import org.toxsoft.skf.users.gui.*;
 import org.toxsoft.skf.users.skide.*;
+import org.toxsoft.skf.users.skide.Activator;
 import org.toxsoft.skf.users.skide.main.*;
 import org.toxsoft.skide.core.api.*;
 
@@ -24,6 +27,10 @@ public class AddonSkidePluginUsers
   // ------------------------------------------------------------------------------------
   // MwsAbstractAddon
   //
+  @Override
+  protected void doRegisterQuants( IQuantRegistrator aQuantRegistrator ) {
+    aQuantRegistrator.registerQuant( new QuantSkUsersGui() );
+  }
 
   @Override
   protected void initApp( IEclipseContext aAppContext ) {
