@@ -1,18 +1,11 @@
 package org.toxsoft.skf.users.gui.km5;
 
 import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
-import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
-import static org.toxsoft.core.tslib.av.impl.AvUtils.*;
 import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
 import static org.toxsoft.uskat.core.ISkHardConstants.*;
 import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
-import org.toxsoft.core.tsgui.bricks.ctx.*;
-import org.toxsoft.core.tsgui.m5.gui.mpc.impl.*;
-import org.toxsoft.core.tsgui.m5.gui.panels.*;
-import org.toxsoft.core.tsgui.m5.gui.panels.impl.*;
 import org.toxsoft.core.tsgui.m5.model.*;
-import org.toxsoft.core.tsgui.m5.model.impl.*;
 import org.toxsoft.core.tslib.utils.errors.*;
 import org.toxsoft.uskat.core.api.sysdescr.*;
 import org.toxsoft.uskat.core.api.users.*;
@@ -53,23 +46,24 @@ class SkUserM5Model
     // links
     KM5MultiLinkFieldDef roles = //
         new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
+    roles.addFlags( M5FF_DETAIL | M5FF_HIDDEN );
     // KM5MultiLinkFieldDef abilities = //
     // new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
     NAME.setNameAndDescription( STR_N_FDEF_NAME, STR_D_FDEF_NAME );
     DESCRIPTION.setNameAndDescription( STR_N_FDEF_DESCR, STR_D_FDEF_DESCR );
     // add fields
     addFieldDefs( login, NAME, active, hidden, DESCRIPTION, roles );
-    // panels creator
-    setPanelCreator( new M5DefaultPanelCreator<>() {
-
-      protected IM5CollectionPanel<ISkUser> doCreateCollEditPanel( ITsGuiContext aContext,
-          IM5ItemsProvider<ISkUser> aItemsProvider, IM5LifecycleManager<ISkUser> aLifecycleManager ) {
-        OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
-        OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
-        MultiPaneComponentModown<ISkUser> mpc = new SkUserMpc( aContext, model(), aItemsProvider, aLifecycleManager );
-        return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
-      }
-    } );
+    // // panels creator
+    // setPanelCreator( new M5DefaultPanelCreator<>() {
+    //
+    // protected IM5CollectionPanel<ISkUser> doCreateCollEditPanel( ITsGuiContext aContext,
+    // IM5ItemsProvider<ISkUser> aItemsProvider, IM5LifecycleManager<ISkUser> aLifecycleManager ) {
+    // OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
+    // OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
+    // MultiPaneComponentModown<ISkUser> mpc = new SkUserMpc( aContext, model(), aItemsProvider, aLifecycleManager );
+    // return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
+    // }
+    // } );
   }
 
   @Override

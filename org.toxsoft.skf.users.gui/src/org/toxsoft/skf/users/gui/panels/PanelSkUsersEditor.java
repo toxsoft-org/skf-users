@@ -66,27 +66,10 @@ public class PanelSkUsersEditor
           new KM5AttributeFieldDef<>( cinf.attrs().list().getByKey( ATRID_USER_IS_HIDDEN ) );
       hidden.setNameAndDescription( STR_N_FDEF_HIDDEN, STR_D_FDEF_HIDDEN );
       hidden.setFlags( M5FF_COLUMN );
-      // links
-      KM5MultiLinkFieldDef roles = //
-          new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
-      roles.addFlags( M5FF_HIDDEN );
-      // KM5MultiLinkFieldDef abilities = //
-      // new KM5MultiLinkFieldDef( cinf.links().list().getByKey( LNKID_USER_ROLES ) );
       NAME.setNameAndDescription( STR_N_FDEF_NAME, STR_D_FDEF_NAME );
       DESCRIPTION.setNameAndDescription( STR_N_FDEF_DESCR, STR_D_FDEF_DESCR );
       // add fields
       addFieldDefs( login, NAME, active, hidden, DESCRIPTION );
-      // panels creator
-      // setPanelCreator( new M5DefaultPanelCreator<>() {
-      //
-      // protected IM5CollectionPanel<ISkUser> doCreateCollEditPanel( ITsGuiContext aContext,
-      // IM5ItemsProvider<ISkUser> aItemsProvider, IM5LifecycleManager<ISkUser> aLifecycleManager ) {
-      // OPDEF_IS_SUPPORTS_TREE.setValue( aContext.params(), AV_TRUE );
-      // OPDEF_IS_ACTIONS_CRUD.setValue( aContext.params(), AV_TRUE );
-      // MultiPaneComponentModown<ISkUser> mpc = new SkUserMpc( aContext, model(), aItemsProvider, aLifecycleManager );
-      // return new M5CollectionPanelMpcModownWrapper<>( mpc, false );
-      // }
-      // } );
     }
 
     @Override
@@ -103,10 +86,10 @@ public class PanelSkUsersEditor
 
   }
 
-  private IM5CollectionPanel<ISkUser> panelUsers;
-  private IInplaceEditorPanel         inplaceRoleDetail;
-  private IM5EntityPanel<ISkUser>     panelUserDetail;
-  private UserRolesPanel              panelUserRoles;
+  private SkUserMpc               panelUsers;
+  private IInplaceEditorPanel     inplaceRoleDetail;
+  private IM5EntityPanel<ISkUser> panelUserDetail;
+  private UserRolesPanel          panelUserRoles;
 
   /**
    * Constructor.
@@ -141,7 +124,9 @@ public class PanelSkUsersEditor
     OPDEF_IS_SUPPORTS_TREE.setValue( ctx.params(), AV_TRUE );
     OPDEF_IS_ACTIONS_CRUD.setValue( ctx.params(), AV_TRUE );
     OPDEF_IS_FILTER_PANE.setValue( ctx.params(), AV_TRUE );
-    panelUsers = model.panelCreator().createCollEditPanel( ctx, lm.itemsProvider(), lm );
+
+    // panelUsers = model.panelCreator().createCollEditPanel( ctx, lm.itemsProvider(), lm );
+    panelUsers = new SkUserMpc( ctx, model, lm.itemsProvider(), lm );
     panelUsers.addTsSelectionListener( selectionChangeEventHelper );
     panelUsers.addTsDoubleClickListener( doubleClickEventHelper );
 
@@ -178,7 +163,7 @@ public class PanelSkUsersEditor
     } );
 
     // Prepare for view.
-    panelUsers.setSelectedItem( panelUsers.items().first() );
+    panelUsers.setSelectedItem( panelUsers.tree().items().first() );
     tabFolder.setSelection( tabItem );
   }
 

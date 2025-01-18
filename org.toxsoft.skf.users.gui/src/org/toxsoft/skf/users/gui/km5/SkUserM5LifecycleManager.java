@@ -71,10 +71,9 @@ public class SkUserM5LifecycleManager
   @Override
   protected ValidationResult doBeforeEdit( IM5Bunch<ISkUser> aValues ) {
     String id = aValues.getAsAv( AID_STRID ).asString();
-    // Slavage:
-    // if( !StridUtils.isValidIdPath( id ) ) {
-    // return ValidationResult.error( MSG_ERR_LOGIN_NOT_IDPATH );
-    // }
+    if( !StridUtils.isValidIdPath( id ) ) {
+      return ValidationResult.error( MSG_ERR_LOGIN_NOT_IDPATH );
+    }
     IDtoFullObject dtoUser = makeUserDto( aValues, coreApi() );
     return userService().svs().validator().canEditUser( dtoUser, aValues.originalEntity() );
   }
@@ -112,8 +111,12 @@ public class SkUserM5LifecycleManager
     dtoUser.attrs().setValue( AID_DESCRIPTION, aValues.getAsAv( AID_DESCRIPTION ) );
     dtoUser.attrs().setValue( ATRID_USER_IS_ENABLED, aValues.getAsAv( ATRID_USER_IS_ENABLED ) );
     dtoUser.attrs().setValue( ATRID_USER_IS_HIDDEN, aValues.getAsAv( ATRID_USER_IS_HIDDEN ) );
-    IList<ISkRole> rolesList = aValues.getAs( LNKID_USER_ROLES, IList.class );
+    IListEdit<ISkRole> rolesList = (IListEdit<ISkRole>)aValues.getAs( LNKID_USER_ROLES, IList.class );
     ISkidList roleSkids = SkHelperUtils.objsToSkids( rolesList );
+    if( roleSkids.isEmpty() ) {
+      // Slavage: 16.1.2025
+      ((SkidList)roleSkids).add( SKID_ROLE_GUEST );
+    }
     dtoUser.links().ensureSkidList( LNKID_USER_ROLES, roleSkids );
     return dtoUser;
   }

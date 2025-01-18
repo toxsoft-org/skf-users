@@ -137,6 +137,9 @@ public class UserRolesPanel
   @Override
   public void setUser( ISkUser aUser ) {
     user = aUser;
+    if( user == null ) {
+      return;
+    }
 
     initializeUserRoles();
   }
