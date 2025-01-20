@@ -160,6 +160,7 @@ public class PanelSkUsersEditor
 
     panelUsers.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
       panelUserDetail.setEntity( aSelectedItem );
+      inplaceRoleDetail.refresh();
       panelUserRoles.setUser( aSelectedItem );
     } );
 

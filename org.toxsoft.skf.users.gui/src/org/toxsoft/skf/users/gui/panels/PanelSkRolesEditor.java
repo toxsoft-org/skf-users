@@ -99,6 +99,7 @@ public class PanelSkRolesEditor
 
     panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
       panelRoleDetail.setEntity( aSelectedItem );
+      inplaceRoleDetail.refresh();
       panelAbilities.setRole( aSelectedItem );
     } );
 
