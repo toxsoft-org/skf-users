@@ -10,6 +10,7 @@ import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
+import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.m5.model.impl.*;
@@ -147,8 +148,9 @@ public class UserRolesPanel
   @Override
   protected Control doCreateControl( Composite aParent ) {
     // Using temporary model.
-    InnerM5Model model = new InnerM5Model( skConn() );
-    m5().initTemporaryModel( model );
+    // InnerM5Model model = new InnerM5Model( skConn() );
+    // m5().initTemporaryModel( model );
+    IM5Model<ISkRole> model = m5().getModel( ISkRole.CLASS_ID, ISkRole.class );
 
     IM5LifecycleManager<ISkRole> lm = new SkRoleM5LifecycleManager( model, skConn() );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );

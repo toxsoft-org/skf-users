@@ -12,6 +12,7 @@ import org.eclipse.swt.custom.*;
 import org.eclipse.swt.widgets.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
 import org.toxsoft.core.tsgui.bricks.ctx.impl.*;
+import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tsgui.m5.gui.panels.*;
 import org.toxsoft.core.tsgui.m5.model.*;
 import org.toxsoft.core.tsgui.panels.inpled.*;
@@ -110,16 +111,16 @@ public class PanelSkUsersEditor
   protected void doInitGui( Composite aParent ) {
     SashForm sf = new SashForm( aParent, SWT.HORIZONTAL );
 
-    // Using temporary model.
-    InnerM5Model model = new InnerM5Model( skConn() );
-    m5().initTemporaryModel( model );
-    // IM5Model<ISkUser> model = m5().getModel( ISkUser.CLASS_ID, ISkUser.class );
+    // // Using temporary model.
+    // InnerM5Model model = new InnerM5Model( skConn() );
+    // m5().initTemporaryModel( model );
+    IM5Model<ISkUser> model = m5().getModel( ISkUser.CLASS_ID, ISkUser.class );
 
     IM5LifecycleManager<ISkUser> lm = new SkUserM5LifecycleManager( model, skConn() );
     ITsGuiContext ctx = new TsGuiContext( tsContext() );
     ctx.params().addAll( tsContext().params() );
 
-    OPDEF_IS_DETAILS_PANE.setValue( ctx.params(), AV_TRUE );
+    OPDEF_IS_DETAILS_PANE.setValue( ctx.params(), AV_FALSE );
     OPDEF_DETAILS_PANE_PLACE.setValue( ctx.params(), avValobj( EBorderLayoutPlacement.SOUTH ) );
     OPDEF_IS_SUPPORTS_TREE.setValue( ctx.params(), AV_TRUE );
     OPDEF_IS_ACTIONS_CRUD.setValue( ctx.params(), AV_TRUE );
