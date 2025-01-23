@@ -99,9 +99,11 @@ public class PanelSkRolesEditor
     tabItem3.setText( STR_TAB_ROLE_ACCESS );
 
     panelRoles.addTsSelectionListener( ( aSource, aSelectedItem ) -> {
-      panelRoleDetail.setEntity( aSelectedItem );
-      inplaceRoleDetail.refresh();
-      panelAbilities.setRole( aSelectedItem );
+      if( aSelectedItem != null ) {
+        panelRoleDetail.setEntity( aSelectedItem );
+        inplaceRoleDetail.refresh();
+        panelAbilities.setRole( aSelectedItem );
+      }
     } );
 
     // Prepare for view.

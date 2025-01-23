@@ -33,6 +33,11 @@ public class AbilitiesPanel
   private IGenericChangeListener checksChangeListener;
   private SkAbilityMpc           panelAbilities;
 
+  /**
+   * Constructor.
+   *
+   * @param aContext {@link ITsGuiContext} - ts context
+   */
   public AbilitiesPanel( ITsGuiContext aContext ) {
     super( aContext );
   }
@@ -43,6 +48,7 @@ public class AbilitiesPanel
 
     // When immutable role then non editable abilities!
     panelAbilities.setEditable( !ISkUserServiceHardConstants.isImmutableRole( role.id() ) );
+    panelAbilities.getControl().setEnabled( !ISkUserServiceHardConstants.isImmutableRole( role.id() ) );
 
     initializeRoleAbilities();
   }
@@ -83,8 +89,8 @@ public class AbilitiesPanel
    * Initializing abilities of role.
    */
   private void initializeRoleAbilities() {
-    IListEdit<ISkAbility> enableAbilities = new ElemArrayList<ISkAbility>();
-    IListEdit<ISkAbility> disableAbilities = new ElemArrayList<ISkAbility>();
+    IListEdit<ISkAbility> enableAbilities = new ElemArrayList<>();
+    IListEdit<ISkAbility> disableAbilities = new ElemArrayList<>();
     for( ISkAbility ability : panelAbilities.tree().items() ) {
       if( abilityManager().isAbilityAllowed( role.id(), ability.id() ) ) {
         enableAbilities.add( ability );

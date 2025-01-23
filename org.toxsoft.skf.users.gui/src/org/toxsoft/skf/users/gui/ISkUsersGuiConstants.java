@@ -29,7 +29,7 @@ public interface ISkUsersGuiConstants {
   String ICONID_ROLES_LIST           = "roles-list";         //$NON-NLS-1$
   String ICONID_USER_EDITOR          = "app-users-editor";   //$NON-NLS-1$
   String ICONID_KINDS_LIST           = "ability-kinds-list"; //$NON-NLS-1$
-  String ICONID_KIND                 = "ability-kind";       //$NON-NLS-1$
+  String ICONID_KIND                 = "ability";            //$NON-NLS-1$
   String ICONID_ABILITY              = "ability";            //$NON-NLS-1$
 
   // ------------------------------------------------------------------------------------
