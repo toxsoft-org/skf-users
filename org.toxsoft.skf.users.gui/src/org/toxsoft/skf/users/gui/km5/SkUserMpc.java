@@ -1,9 +1,12 @@
 package org.toxsoft.skf.users.gui.km5;
 
 import static org.toxsoft.core.tsgui.bricks.actions.ITsStdActionDefs.*;
+import static org.toxsoft.core.tsgui.m5.IM5Constants.*;
 import static org.toxsoft.core.tsgui.m5.gui.mpc.IMultiPaneComponentConstants.*;
 import static org.toxsoft.skf.users.gui.ISkUsersGuiConstants.*;
 import static org.toxsoft.skf.users.gui.ISkUsersGuiSharedResources.*;
+import static org.toxsoft.uskat.core.ISkHardConstants.*;
+import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
 import org.toxsoft.core.tsgui.bricks.actions.*;
 import org.toxsoft.core.tsgui.bricks.ctx.*;
@@ -133,6 +136,15 @@ public class SkUserMpc
     aActs.add( ACDEF_SEPARATOR );
     aActs.add( ACDEF_NO_HIDDEN_USERS );
     return super.doCreateToolbar( aContext, aName, aIconSize, aActs );
+  }
+
+  @Override
+  protected void doCreateTreeColumns() {
+    // Shows the following fields.
+    tree().columnManager().add( AID_STRID );
+    tree().columnManager().add( FID_NAME );
+    tree().columnManager().add( ATRID_USER_IS_ENABLED );
+    tree().columnManager().add( ATRID_USER_IS_HIDDEN );
   }
 
   @Override

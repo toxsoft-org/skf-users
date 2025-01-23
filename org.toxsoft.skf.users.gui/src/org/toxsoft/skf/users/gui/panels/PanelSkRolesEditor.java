@@ -90,6 +90,7 @@ public class PanelSkRolesEditor
     CTabItem tabItem2 = new CTabItem( tabFolder, SWT.NONE );
     tabItem2.setText( STR_TAB_ROLE_ABILITIES );
 
+    ctx = new TsGuiContext( tsContext() );
     panelAbilities = new AbilitiesPanel( ctx );
     tabItem2.setControl( panelAbilities.createControl( tabFolder ) );
 
