@@ -6,6 +6,7 @@ import static org.toxsoft.uskat.core.api.users.ISkUserServiceHardConstants.*;
 
 import org.toxsoft.core.tsgui.m5.*;
 import org.toxsoft.core.tslib.bricks.strid.*;
+import org.toxsoft.core.tslib.bricks.strid.impl.*;
 import org.toxsoft.core.tslib.bricks.validator.*;
 import org.toxsoft.core.tslib.coll.*;
 import org.toxsoft.core.tslib.gw.skid.*;
@@ -67,6 +68,12 @@ public class SkRoleM5LifecycleManager
 
   @Override
   protected ValidationResult doBeforeCreate( IM5Bunch<ISkRole> aValues ) {
+    // preliminary check
+    String id = aValues.getAsAv( AID_STRID ).asString();
+    ValidationResult vr = StridUtils.validateIdPath( id );
+    if( !vr.isOk() ) {
+      return vr;
+    }
     IDtoObject dtoRole = makeRoleDto( aValues );
     return userService().svs().validator().canCreateRole( dtoRole );
   }
