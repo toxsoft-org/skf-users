@@ -58,6 +58,12 @@ public class TaskUsersUpload
     ISkConnection destConn = UploadToServerTaskProcessor.REFDEF_IN_OPEN_SK_CONN.getRef( aInput );
     ISkUserService destUserService = destConn.coreApi().userService();
     // upload users and roles from SkIDE
+    IStridablesList<ISkRole> srcRolesList = srcUserService.listRoles();
+    for( ISkRole srcRole : srcRolesList ) {
+      ISkRole userRole = srcUserService.findRole( srcRole.strid() );
+      DtoObject srcDtoRole = DtoObject.createDtoObject( userRole.skid(), coreApi() );
+      destUserService.defineRole( srcDtoRole );
+    }
     IStridablesList<ISkUser> srcUsersList = srcUserService.listUsers();
     for( ISkUser srcUser : srcUsersList ) {
       ISkUser destUser = destUserService.findUser( srcUser.strid() );
@@ -68,14 +74,8 @@ public class TaskUsersUpload
       else {
         IDtoFullObject srcDtoUser = makeUserDto( srcUser, coreApi() );
         // FIXME get actual password
-        destUser = destUserService.createUser( srcDtoUser, "1" );
+        destUser = destUserService.createUser( srcDtoUser, "root" );
       }
-    }
-    IStridablesList<ISkRole> srcRolesList = srcUserService.listRoles();
-    for( ISkRole srcRole : srcRolesList ) {
-      ISkRole userRole = srcUserService.findRole( srcRole.strid() );
-      DtoObject srcDtoRole = DtoObject.createDtoObject( userRole.skid(), coreApi() );
-      destUserService.defineRole( srcDtoRole );
     }
     ValidationResult vr = ValidationResult.info( FMT_INFO_USERS_UPLOADED, srcUsersList.size(), srcRolesList.size() );
     lop.finished( vr );
