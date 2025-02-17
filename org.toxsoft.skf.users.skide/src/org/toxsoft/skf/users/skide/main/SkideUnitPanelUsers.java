@@ -35,12 +35,12 @@ class SkideUnitPanelUsers
     tiUsers.setToolTipText( STR_TAB_USERS_D );
     tiUsers.setImage( iconManager().loadStdIcon( ICONID_USERS_LIST, tabIconSize ) );
     // roles tab
-    // TabItem tiRoles = new TabItem( tabFolder, SWT.NONE );
-    // PanelSkRolesEditor panelRoles = new PanelSkRolesEditor( tsContext(), null );
-    // tiRoles.setControl( panelRoles.createControl( tabFolder ) );
-    // tiRoles.setText( STR_TAB_ROLES );
-    // tiRoles.setToolTipText( STR_TAB_ROLES_D );
-    // tiRoles.setImage( iconManager().loadStdIcon( ICONID_ROLES_LIST, tabIconSize ) );
+    TabItem tiRoles = new TabItem( tabFolder, SWT.NONE );
+    PanelSkRolesEditor panelRoles = new PanelSkRolesEditor( tsContext(), null );
+    tiRoles.setControl( panelRoles.createControl( tabFolder ) );
+    tiRoles.setText( STR_TAB_ROLES );
+    tiRoles.setToolTipText( STR_TAB_ROLES_D );
+    tiRoles.setImage( iconManager().loadStdIcon( ICONID_ROLES_LIST, tabIconSize ) );
     return tabFolder;
   }
 
